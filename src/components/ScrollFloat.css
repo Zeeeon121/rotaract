@@ -1,0 +1,24 @@
+.scroll-float {
+  overflow: hidden;
+  margin: 120px 0;
+  will-change: transform;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: clamp(1.6rem, 8vw, 10rem);
+  font-weight: 900;
+  line-height: 1.5;
+  color: white;
+  will-change: transform;
+  text-align: center;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
