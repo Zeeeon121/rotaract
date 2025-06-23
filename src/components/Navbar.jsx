@@ -4,6 +4,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import './Navbar.css';
 import logo from '../assets/rc.png'; // Adjust the path as necessary
+import Contact from './Contact';
+import Hero from './Hero';
+import About from './About';
+
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
@@ -31,11 +35,11 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const navItems = [
-    { text: 'Home', href: '#' },
-    { text: 'About', href: '#' },
+    { text: 'Home', href: '/' },
+    { text: 'About', href: '#about-hero' },
     { text: 'Events', href: '#' },
     { text: 'Team', href: '#' },
-    { text: 'Contact', href: '#' },
+    { text: 'Contact', href: '#contact' },
   ];
 
   const drawer = (
@@ -131,9 +135,7 @@ const Navbar = () => {
         </ul>
 
         <div className="nav-right">
-          <a href="#" className="get-started">
-            Get Started
-          </a>
+         
           <IconButton
             color="inherit"
             aria-label="open drawer"

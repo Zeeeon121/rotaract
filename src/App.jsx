@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Loader from './components/Loader'; // ✅ Import loader
 import Contact from './components/Contact';
 import About from './components/About';
+import MarqueeComponent from './components/Marquee';
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -16,6 +17,7 @@ function App() {
           <Navbar />
           <Hero />
         <About/>
+        <MarqueeComponent/>
           <Contact/>
         </>
       )}

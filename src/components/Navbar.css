@@ -1,10 +1,14 @@
+/* ====================== */
+/* NAVBAR COMPONENT STYLES */
+/* ====================== */
+
 /* Navbar Container */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 48px;
-  background: linear-gradient(135deg, #011528 0%, #012136 100%);
+  background: #011528;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,8 +16,7 @@
   z-index: 1000;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.6s ease-out;
 }
 
 /* Navbar Visibility States */
@@ -27,11 +30,23 @@
   opacity: 1;
 }
 
+/* Glassmorphism effect enhancement */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  pointer-events: none;
+}
+
 /* Logo Container */
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0px;
   text-decoration: none;
   transition: all 0.3s ease;
   padding: 8px 12px;
@@ -157,6 +172,7 @@
   gap: 16px;
 }
 
+/* Get Started Button */
 .get-started {
   padding: 12px 24px;
   background: linear-gradient(135deg, #00aaff 0%, #0088cc 100%);
@@ -214,7 +230,18 @@
   transform: scale(1.05);
 }
 
-/* Responsive Styles */
+/* Focus states for accessibility */
+.nav-links a:focus,
+.get-started:focus,
+.logo-container:focus {
+  outline: 2px solid #bf9d36;
+  outline-offset: 2px;
+}
+
+/* ====================== */
+/* RESPONSIVE STYLES */
+/* ====================== */
+
 @media (max-width: 768px) {
   .navbar {
     padding: 12px 24px;
@@ -249,7 +276,7 @@
   }
 }
 
-/* Additional Enhancements */
+/* Large desktop styles */
 @media (min-width: 1200px) {
   .navbar {
     padding: 20px 64px;
@@ -273,7 +300,10 @@
   }
 }
 
-/* Smooth animations for page load */
+/* ====================== */
+/* ANIMATIONS */
+/* ====================== */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -283,28 +313,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.navbar {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Focus states for accessibility */
-.nav-links a:focus,
-.get-started:focus,
-.logo-container:focus {
-  outline: 2px solid #bf9d36;
-  outline-offset: 2px;
-}
-
-/* Glassmorphism effect enhancement */
-.navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  pointer-events: none;
 }
