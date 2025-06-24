@@ -1,33 +1,37 @@
-// About.jsx
 import React, { useEffect, useRef } from 'react';
 import ScrollFloat from './ScrollFloat';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './About.css';
-import theme from '../assets/theme.png'; // Adjust the path as necessary
+import theme from '../assets/theme.png'; // Adjust path if needed
+import rc from '../assets/rc.png'; // Adjust path if needed
 const About = () => {
   const contentRef = useRef(null);
   const imageRef = useRef(null);
   const heroRef = useRef(null);
   const statsRef = useRef(null);
   const storyTitleRef = useRef(null);
+  const facultyRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.set([heroRef.current, storyTitleRef.current, contentRef.current, imageRef.current, statsRef.current], {
-      opacity: 1
-    });
+    gsap.set(
+      [heroRef.current, storyTitleRef.current, contentRef.current, imageRef.current, statsRef.current, facultyRef.current],
+      { opacity: 1 }
+    );
 
     if (heroRef.current) {
-      gsap.fromTo(heroRef.current, 
+      gsap.fromTo(
+        heroRef.current,
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }
+        { opacity: 1, y: 0, duration: 1.5, ease: 'power3.out' }
       );
     }
 
     if (storyTitleRef.current) {
-      gsap.fromTo(storyTitleRef.current,
+      gsap.fromTo(
+        storyTitleRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1,
@@ -35,18 +39,17 @@ const About = () => {
           duration: 1.2,
           scrollTrigger: {
             trigger: storyTitleRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none",
-            onComplete: () => gsap.set(storyTitleRef.current, { opacity: 1 })
+            start: 'top 90%',
+            toggleActions: 'play reset play reset',
           }
         }
       );
     }
 
     const paragraphs = contentRef.current?.querySelectorAll('p');
-    if (paragraphs && paragraphs.length > 0) {
-      gsap.set(paragraphs, { opacity: 1 });
-      gsap.fromTo(paragraphs,
+    if (paragraphs?.length > 0) {
+      gsap.fromTo(
+        paragraphs,
         { opacity: 0, y: 30 },
         {
           opacity: 1,
@@ -55,17 +58,16 @@ const About = () => {
           stagger: 0.2,
           scrollTrigger: {
             trigger: contentRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none",
-            onComplete: () => gsap.set(paragraphs, { opacity: 1 })
+            start: 'top 90%',
+            toggleActions: 'play none none none',
           }
         }
       );
     }
 
     if (imageRef.current) {
-      gsap.set(imageRef.current, { opacity: 1 });
-      gsap.fromTo(imageRef.current,
+      gsap.fromTo(
+        imageRef.current,
         { opacity: 0, x: 50, scale: 0.9 },
         {
           opacity: 1,
@@ -74,18 +76,17 @@ const About = () => {
           duration: 1.5,
           scrollTrigger: {
             trigger: imageRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none",
-            onComplete: () => gsap.set(imageRef.current, { opacity: 1 })
+            start: 'top 90%',
+            toggleActions: 'play none none none',
           }
         }
       );
     }
 
     const statsCards = statsRef.current?.querySelectorAll('.stat-card');
-    if (statsCards && statsCards.length > 0) {
-      gsap.set(statsCards, { opacity: 1 });
-      gsap.fromTo(statsCards,
+    if (statsCards?.length > 0) {
+      gsap.fromTo(
+        statsCards,
         { opacity: 0, y: 40 },
         {
           opacity: 1,
@@ -94,17 +95,33 @@ const About = () => {
           stagger: 0.15,
           scrollTrigger: {
             trigger: statsRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none",
-            onComplete: () => gsap.set(statsCards, { opacity: 1 })
+            start: 'top 90%',
+            toggleActions: 'play none none none',
           }
         }
       );
     }
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    if (facultyRef.current) {
+      const cards = facultyRef.current.querySelectorAll('.faculty-card');
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: facultyRef.current,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          }
+        }
+      );
+    }
+
+    return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   }, []);
 
   return (
@@ -112,17 +129,11 @@ const About = () => {
       <section ref={heroRef} className="about-hero" id="about-hero">
         <div className="background-pattern" />
         <div className="hero-content">
-          <ScrollFloat
-            animationDuration={1.5}
-            ease="power3.out"
-            scrollStart="top bottom-=100"
-            scrollEnd="bottom top+=100"
-            stagger={0.05}
-          >
+          <ScrollFloat animationDuration={1.5} ease="power3.out">
             About Us
           </ScrollFloat>
           <div className="hero-description">
-            Rotaract CRCE is a youth-driven club under the umbrella of Rotary International, focused on personal development, leadership, and service to society through impactful projects and vibrant community engagement.
+            Rotaract CRCE is a youth-driven club under Rotary International, focused on leadership and service.
           </div>
         </div>
       </section>
@@ -130,15 +141,12 @@ const About = () => {
       <section className="main-content">
         <div className="content-grid">
           <div ref={contentRef} className="content-text">
-            <h2 ref={storyTitleRef} className="content-title">Our Theme : Ecensia</h2>
-            <p>Esencia refers to the core, soul, or essential nature of something. It's about what makes something truly what it is — its spirit, values, and identity.
-
-</p>
+            <h2 ref={storyTitleRef} className="content-title">Our Theme: Esencia</h2>
+            <p>Esencia refers to the core spirit or identity that defines us. It’s the soul of our work and mission.</p>
           </div>
-
           <div ref={imageRef} className="image-wrapper">
             <div className="image-box">
-              <img src={theme} alt="About Us" className="about-image" />
+              <img src={theme} alt="Theme" className="about-image" />
               <div className="image-decor" />
             </div>
           </div>
@@ -147,14 +155,71 @@ const About = () => {
 
       <section ref={statsRef} className="stats-section">
         <div className="stats-grid">
-          {[{ number: '500+', label: 'Lorem Members' }, { number: '50+', label: 'Ipsum Projects' }, { number: '10+', label: 'Dolor Years' }, { number: '25+', label: 'Amet Awards' }].map((stat, index) => (
-            <div key={index} className="stat-card">
+          {[
+            { number: '500+', label: 'Members' },
+            { number: '50+', label: 'Projects' },
+            { number: '10+', label: 'Years' },
+            { number: '25+', label: 'Awards' }
+          ].map((stat, i) => (
+            <div key={i} className="stat-card">
               <div className="stat-number">{stat.number}</div>
               <div className="stat-label">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
+
+      <section ref={facultyRef} className="faculty-section">
+  <div className="faculty-container">
+    <div className="faculty-split">
+      {/* Faculty In Charge */}
+      <div className="faculty-column">
+        <h2 className="faculty-title">Faculty In Charge</h2>
+        <div className="faculty-grid">
+          <div className="faculty-card">
+            <div className="faculty-avatar">
+              <img 
+                src={rc} 
+                alt="Faculty In Charge" 
+                className="faculty-avatar-img"
+              />
+            </div>
+            <div className="faculty-info">
+              <h3 className="faculty-name">Sangeeta</h3>
+              <p className="faculty-position">Professor & Club Advisor</p>
+              <p className="faculty-description">
+                Dr. Smith mentors the club with deep insight and passion for student development and societal contribution.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Past President */}
+      <div className="faculty-column">
+        <h2 className="faculty-title">Past President</h2>
+        <div className="faculty-grid">
+          <div className="faculty-card">
+            <div className="faculty-avatar">
+              <img 
+                src={rc} 
+                alt="Past President" 
+                className="faculty-avatar-img"
+              />
+            </div>
+            <div className="faculty-info">
+              <h3 className="faculty-name">Steve</h3>
+              <p className="faculty-position">President 2024–25</p>
+              <p className="faculty-description">
+                Alex championed many service initiatives and brought creativity and leadership that elevated the club's presence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 };

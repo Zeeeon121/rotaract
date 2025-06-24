@@ -4,7 +4,9 @@ import Hero from './components/Hero';
 import Loader from './components/Loader'; // ✅ Import loader
 import Contact from './components/Contact';
 import About from './components/About';
-import MarqueeComponent from './components/Marquee';
+import Gallery from './components/Gallery';
+import MarqueeComponent from './components/MarqueeComponent';
+// import MinimapGallery from './components/MinimapGallery';
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -17,8 +19,11 @@ function App() {
           <Navbar />
           <Hero />
         <About/>
+        <Gallery/>
+      {/* <MinimapGallery/> */}
         <MarqueeComponent/>
           <Contact/>
+     
         </>
       )}
     </>

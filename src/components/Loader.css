@@ -87,7 +87,7 @@ body.no-scroll {
   height: 100%;
   color:#d7b64d;
   overflow: hidden;
-  animation: animateLoaderText 6s linear forwards;
+  animation: animateLoaderText 3s linear forwards;
 }
 
 @keyframes animateLoaderText {
