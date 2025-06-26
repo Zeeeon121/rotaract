@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Gallery.css';
 import rcImage from '../assets/rc.png'; // Adjust path if needed
-
+import SplitText from './SplitText'; // Assuming you have a SplitText component
 const Gallery = () => {
   const previewRef = useRef(null);
   const imagesContainerRef = useRef(null);
@@ -9,6 +9,8 @@ const Gallery = () => {
   const indicatorRef = useRef(null);
   const containerRef = useRef(null);
   const [activeItemIndex, setActiveItemIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const eventsRef = useRef(null);
 
   const items = [
     {
@@ -60,6 +62,17 @@ const Gallery = () => {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+
     const preview = previewRef.current;
     const imagesContainer = imagesContainerRef.current;
     const nav = navRef.current;
@@ -152,31 +165,48 @@ const Gallery = () => {
         updateScroll();
       });
     };
-  }, [activeItemIndex, items.length]);
+  }, [activeItemIndex, items.length, isMobile]);
 
   return (
+    <>
+      <section ref={eventsRef} className="events-section">
+  <div className="events-container">
+    <SplitText 
+      text="Our Events"
+      className="events-title"
+      splitType="chars"
+      delay={50}
+      from={{ opacity: 0, y: 20 }}
+      to={{ opacity: 1, y: 0 }}
+        replayOnEnter={false}  
+    />
+    <p className="events-subtitle">Discover our upcoming and past events</p>
+  </div>
+</section>
     <div className="container" ref={containerRef}>
-      <div className="wrapper">
+      <div className="wrapper" id='gallery'>
         <nav ref={navRef}>
           {/* Navigation links can be added here */}
         </nav>
 
         <div className="gallery">
-          <div className="minimap">
-            <div className="preview" ref={previewRef}>
-              {items.map((item, index) => (
-                <div key={index} className="item-preview">
-                  <span>{item.title}</span>
-                </div>
-              ))}
+          {!isMobile && (
+            <div className="minimap">
+              <div className="preview" ref={previewRef}>
+                {items.map((item, index) => (
+                  <div key={index} className="item-preview">
+                    <span>{item.title}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="active-img-indicator" ref={indicatorRef}></div>
             </div>
-            <div className="active-img-indicator" ref={indicatorRef}></div>
-          </div>
+          )}
 
-          <div className="images" ref={imagesContainerRef}>
+          <div className={`images ${isMobile ? 'mobile' : ''}`} ref={imagesContainerRef}>
             {items.map((item, index) => (
               <React.Fragment key={index}>
-                <div className="item" data-index={index}>
+                <div className={`item ${isMobile ? 'mobile' : ''}`} data-index={index}>
                   <div className="item-img">
                     <img src={item.image} alt={item.title} />
                   </div>
@@ -185,7 +215,7 @@ const Gallery = () => {
                       <div className="item-title">{item.title}</div>
                       <div className="item-desc-text">{item.description}</div>
                     </div>
-                    <div className="item-bottom">
+                    <div className={`item-bottom ${isMobile ? 'mobile' : ''}`}>
                       <div className="item-aim">
                         <div className="aim-label">Aim</div>
                         <div className="aim-text">{item.aim}</div>
@@ -204,14 +234,17 @@ const Gallery = () => {
                     </div>
                   </div>
                 </div>
-                <hr style={{ margin: '2rem 0', borderColor: '#ccc' }} />
+                {index < items.length - 1 && (
+                  <hr style={{ margin: '2rem 0', borderColor: '#ccc' }} />
+                )}
               </React.Fragment>
             ))}
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 };
 
-export default Gallery;
+export default Gallery

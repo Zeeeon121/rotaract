@@ -212,7 +212,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" id='hero'>
         <div ref={captureRef} id="capture">
           <img src={photo} alt="Background" />
         </div>

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import ScrollFloat from './ScrollFloat';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './About.css';
-import theme from '../assets/theme.png'; // Adjust path if needed
-import rc from '../assets/rc.png'; // Adjust path if needed
+import theme from '../assets/theme.png';
+import rc from '../assets/rc.png';
+
 const About = () => {
   const contentRef = useRef(null);
   const imageRef = useRef(null);
@@ -12,9 +12,21 @@ const About = () => {
   const statsRef = useRef(null);
   const storyTitleRef = useRef(null);
   const facultyRef = useRef(null);
+  const floatTextRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    // New float animation for the title
+    if (floatTextRef.current) {
+      gsap.to(floatTextRef.current, {
+        y: -10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    }
 
     gsap.set(
       [heroRef.current, storyTitleRef.current, contentRef.current, imageRef.current, statsRef.current, facultyRef.current],
@@ -40,7 +52,7 @@ const About = () => {
           scrollTrigger: {
             trigger: storyTitleRef.current,
             start: 'top 90%',
-            toggleActions: 'play reset play reset',
+            toggleActions: 'play none none none',
           }
         }
       );
@@ -125,19 +137,19 @@ const About = () => {
   }, []);
 
   return (
-    <div className="about-container">
-      <section ref={heroRef} className="about-hero" id="about-hero">
-        <div className="background-pattern" />
-        <div className="hero-content">
-          <ScrollFloat animationDuration={1.5} ease="power3.out">
-            About Us
-          </ScrollFloat>
-          <div className="hero-description">
-            Rotaract CRCE is a youth-driven club under Rotary International, focused on leadership and service.
+    <>
+      <div className="about-container">
+        <section ref={heroRef} className="about-hero" id="about-hero">
+          <div className="background-pattern" />
+          <div className="hero-content">
+            <h1 ref={floatTextRef} className="float-title">
+              About Us
+            </h1>
+            <div className="hero-description">
+              Rotaract CRCE is a youth-driven club under Rotary International, focused on leadership and service.
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
       <section className="main-content">
         <div className="content-grid">
           <div ref={contentRef} className="content-text">
@@ -220,7 +232,13 @@ const About = () => {
     </div>
   </div>
 </section>
+
     </div>
+
+
+
+
+    </>
   );
 };
 

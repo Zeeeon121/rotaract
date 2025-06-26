@@ -112,6 +112,24 @@ nav {
   display: flex;
   gap: 20px;
   padding: 0 20px;
+  position: relative;
+}
+
+/* Vertical line styling */
+.item::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #ccc;
+  z-index: 1;
+}
+
+/* Hide vertical line on last item */
+.item:last-child::before {
+  display: none;
 }
 
 .item-img {
@@ -343,4 +361,139 @@ nav {
   color: #fff;
   font-size: 0.9em;
   font-weight: 600;
+}
+
+/* Horizontal divider with connecting vertical line */
+.item hr {
+  position: relative;
+  margin: 2rem 0 2rem 20px; /* Added left margin to align with vertical line */
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  .gallery {
+    flex-direction: column;
+  }
+  .events-title{
+    font-size: 36px;
+    line-height: 1.2;
+  }
+  
+  .minimap {
+    display: none;
+  }
+  
+  .images {
+    width: 100%;
+    padding-top: 80px;
+  }
+  
+  .item {
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 50px;
+    padding: 0 15px;
+  }
+  
+  .item::before {
+    display: none; /* Hide vertical line on mobile */
+  }
+  
+  .item hr {
+    margin-left: 0; /* Reset left margin on mobile */
+  }
+  
+  .item-img,
+  .item-details {
+    width: 100%;
+  }
+  
+  .item-img {
+    height: 250px;
+    margin-bottom: 20px;
+  }
+  
+  .item-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .item-aim,
+  .item-actions {
+    width: 100%;
+    max-height: none;
+  }
+  
+  .item-title {
+    font-size: 1.5em;
+  }
+  
+  .item-desc-text {
+    font-size: 1em;
+  }
+  
+  nav {
+    padding: 1em;
+  }
+  
+  .view-more-btn {
+    padding: 12px 16px;
+    font-size: 0.9em;
+  }
+  
+  .item-date {
+    font-size: 1em;
+  }
+  
+  .item-description {
+    min-height: auto;
+    max-height: none;
+  }
+}
+
+.events-section {
+  padding: 80px 20px;
+  background: #011526;
+  position: relative;
+  overflow: hidden;
+}
+
+.events-title {
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.events-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* SplitText Animation Styles */
+.split-parent {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.split-parent .char {
+  display: inline-block;
+  position: relative;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.6s ease;
+}
+
+.split-parent.animate .char {
+  transform: translateY(0);
+  opacity: 1;
 }

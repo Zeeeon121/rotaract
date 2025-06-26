@@ -6,6 +6,7 @@ import Contact from './components/Contact';
 import About from './components/About';
 import Gallery from './components/Gallery';
 import MarqueeComponent from './components/MarqueeComponent';
+import Team from './components/Team';
 // import MinimapGallery from './components/MinimapGallery';
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ function App() {
           <Hero />
         <About/>
         <Gallery/>
+        <Team/>
       {/* <MinimapGallery/> */}
         <MarqueeComponent/>
           <Contact/>

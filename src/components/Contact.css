@@ -344,3 +344,25 @@
 .whatsapp-buttons .icon-circle {
   animation: pulse 2s infinite;
 }
+@media (max-width: 1023px) {
+  .useful-links {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .contact-section {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 24px 0;
+  }
+
+  .useful-links,
+  .contact-info,
+  .location-section {
+    padding: 16px;
+  }
+
+  .whatsapp-buttons button {
+    padding: 12px;
+  }
+}

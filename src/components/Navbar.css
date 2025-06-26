@@ -3,6 +3,9 @@
 /* ====================== */
 
 /* Navbar Container */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -68,6 +71,14 @@
 
 .logo-container:hover::before {
   left: 100%;
+}
+.nav-links a,
+.nav-links a:focus,
+.nav-links a:active,
+.nav-links a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .logo-container:hover {
@@ -236,10 +247,13 @@
 .nav-links a:focus,
 .get-started:focus,
 .logo-container:focus {
-  outline: 2px solid #bf9d36;
+
   outline-offset: 2px;
 }
-
+.nav-links a.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
 /* ====================== */
 /* RESPONSIVE STYLES */
 /* ====================== */
@@ -316,3 +330,17 @@
     transform: translateY(0);
   }
 }
+
+/* Remove click/focus background and glow */
+.nav-links a,
+.nav-links a:focus,
+.nav-links a:focus-visible,
+.nav-links a:active,
+.nav-links a:visited,
+.nav-links a:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Optional: remove active link highlight class if not used anymore */
