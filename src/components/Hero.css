@@ -97,16 +97,17 @@
   pointer-events: none;
 }
 
-.scroll-area {
-  height: 10vh;
-}
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 2rem;
   }
-
+.hero {
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
   .hero-content h2 {
     font-size: 1.2rem;
   }
@@ -115,9 +116,7 @@
     font-size: 0.9rem;
   }
 
-  .scroll-area {
-    height: 15vh;
-  }
+ 
 }
 
 @media (max-width: 480px) {

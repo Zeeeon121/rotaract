@@ -165,22 +165,7 @@ const About = () => {
         </div>
       </section>
 
-      <section ref={statsRef} className="stats-section">
-        <div className="stats-grid">
-          {[
-            { number: '500+', label: 'Members' },
-            { number: '50+', label: 'Projects' },
-            { number: '10+', label: 'Years' },
-            { number: '25+', label: 'Awards' }
-          ].map((stat, i) => (
-            <div key={i} className="stat-card">
-              <div className="stat-number">{stat.number}</div>
-              <div className="stat-label">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+     
       <section ref={facultyRef} className="faculty-section">
   <div className="faculty-container">
     <div className="faculty-split">
@@ -197,11 +182,13 @@ const About = () => {
               />
             </div>
             <div className="faculty-info">
-              <h3 className="faculty-name">Sangeeta</h3>
-              <p className="faculty-position">Professor & Club Advisor</p>
-              <p className="faculty-description">
-                Dr. Smith mentors the club with deep insight and passion for student development and societal contribution.
-              </p>
+              <h3 className="faculty-name">Sangeeta Parshionikar</h3>
+              <p className="faculty-position">Faculty in charge</p>
+             <p className="faculty-description">
+  Dr. Sangeeta Parshionikar mentors the club with dedication, encouraging academic growth and meaningful community involvement.
+</p>
+
+              
             </div>
           </div>
         </div>
@@ -209,7 +196,7 @@ const About = () => {
 
       {/* Past President */}
       <div className="faculty-column">
-        <h2 className="faculty-title">Past President</h2>
+        <h2 className="faculty-title">Immediate Past President</h2>
         <div className="faculty-grid">
           <div className="faculty-card">
             <div className="faculty-avatar">
@@ -220,11 +207,13 @@ const About = () => {
               />
             </div>
             <div className="faculty-info">
-              <h3 className="faculty-name">Steve</h3>
+              <h3 className="faculty-name">Steve Antony</h3>
               <p className="faculty-position">President 2024–25</p>
               <p className="faculty-description">
-                Alex championed many service initiatives and brought creativity and leadership that elevated the club's presence.
-              </p>
+  Steve led the club in 2024–25 with vision, launching key service projects and promoting an inclusive, active culture.
+</p>
+
+              
             </div>
           </div>
         </div>

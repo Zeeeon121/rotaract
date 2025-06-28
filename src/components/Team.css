@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 20px 0;
   box-sizing: border-box;
-  background: #000; /* Added for better mobile overlay */
+  background: #000;
 }
 
 .center {
@@ -28,7 +28,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: poppins;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   padding: 0 20px;
   position: relative;
 }
@@ -37,7 +37,7 @@ body {
   font-family: 'Montserrat', 'Poppins', -apple-system, BlinkMacSystemFont, 
                'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
                'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: clamp(2.5rem, 8vw, 5.5rem); /* More responsive font size */
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
   font-weight: 700;
   margin: 0 0 2rem 0;
   text-align: center;
@@ -138,8 +138,8 @@ body {
 }
 
 .profile img {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   position: relative;
   z-index: 2;
@@ -153,129 +153,177 @@ body {
   font-size: 16px;
   font-weight: 600;
   text-align: center;
+  color: white;
 }
 
 .details span {
   font-weight: 300;
   font-size: 14px;
+  color: #ccc;
 }
 
-.card {
-  width: 100%;
-  height: 300px;
-  margin-bottom: 20px;
-  background: var(--primary);
-  box-sizing: border-box;
-  padding: 20px;
+/* Uiverse Card Styles */
+.uv-card {
+  width: 220px;
+  height: 315px;
+  background: rgb(38, 38, 38);
+  box-shadow: 7px 5px 10px rgba(0, 0, 0, 0.333);
+  border-radius: 8px;
   display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
-  border-radius: 6mm;
-  position: relative;
-}
-
-.head {
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: left;
-  margin-bottom: 5px;
-}
-
-.head img {
-  margin: 0;
-  width: 80px;
-  height: 80px;
-  border-radius: 5mm;
-}
-
-.name {
-  font-size: 16px;
-  font-weight: 200;
-  width: fit-content;
-  margin-left: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 0 8px;
-  border-radius: 3mm;
-}
-
-.content {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 15px;
-  position: relative;
-}
-
-.role {
-  font-weight: 200;
-  font-size: 14px;
-}
-
-.icons {
-  backdrop-filter: blur(9px) saturate(180%);
-  -webkit-backdrop-filter: blur(9px) saturate(180%);
-  background: rgba(255, 255, 255, 0.4);
-  width: 100%;
-  height: fit-content;
-  box-sizing: border-box;
-  padding: 0 20px;
-  border-radius: 7mm;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.content::before {
   position: absolute;
-  content: "";
-  top: 100%;
-  left: 70%;
-  transform: translate(-50%, 0);
-  background: var(--secondary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.uv-card.show {
+  display: block;
+  opacity: 1;
+  animation: fadeInCenter 0.3s ease-out forwards;
+}
+
+.imge {
+  height: 90px;
+  background-color: #ff5858;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+}
+
+.Usericon {
+  background-color: #414141;
+  transform: translateX(10px) translateY(10px);
   width: 60px;
-  height: 30px;
-  filter: blur(30px);
+  height: 60px;
+  border-radius: 10px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMjUiIGZpbGw9IiM0MTQxNDEiLz4KPGNpcmNsZSBjeD0iMjUiIGN5PSIyMCIgcj0iOCIgZmlsbD0iI2ZmNTg1OCIvPgo8cGF0aCBkPSJNMTAgMzVjMC01IDctMTAgMTUtMTBzMTUgNSAxNSAxMHYxMEgxMFYzNXoiIGZpbGw9IiNmZjU4NTgiLz4KPC9zdmc+');
+  background-size: cover;
 }
 
-.icons a {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
+.UserName {
+  background-color: #414141;
+  width: 80px;
+  height: 20px;
+  border-radius: 5px;
   color: white;
+  font-size: 14px;
+  font-weight: bold;
+  transform:  translateX(80px) translateY(-40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+}
+
+.Id {
+  background-color: #414141;
+  width: 120px;
+  height: 18px;
+  border-radius: 5px;
+  color: #ccc;
+  font-size: 12px;
+  font-weight: normal;
+  transform: translateX(80px) translateY(-30px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+}
+.photo-placeholder {
+  background-color: #414141;
+  transform: translate(5px, 6px);
+  width: 210px;
+  height: 160px;
+  border-radius: 5px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDI0MCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyNDAiIGhlaWdodD0iMTYwIiByeD0iNSIgZmlsbD0iIzQxNDE0MSIvPgo8cGF0aCBkPSJNMTIwIDgwQzEzMy4yNTQgODAgMTQ0IDY5LjI1NDMgMTQ0IDU2QzE0NCA0Mi43NDU3IDEzMy4yNTQgMzIgMTIwIDMyQzEwNi43NDYgMzIgOTYgNDIuNzQ1NyA5NiA1NkM5NiA2OS4yNTQzIDEwNi43NDYgODAgMTIwIDgwWiIgZmlsbD0iI2ZmNTg1OCIvPgo8cGF0aCBkPSJNNDAgMTYwQzQwIDE2MCA4MCAxMjAgMTIwIDEyMEMxNjAgMTIwIDIwMCAxNjAgMjAwIDE2MEg0MFoiIGZpbGw9IiNmZjU4NTgiLz4KPC9zdmc+');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+}
+
+.social-media {
+  position: relative;
+  padding: 15px 20px 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 40px);
+}
+
+.social-media:before {
+  content: " ";
+  display: block;
+  width: calc(100% - 20px);
+  height: 2px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #414141;
+}
+
+.social-media a {
   text-decoration: none;
-  font-size: 16px;
-  transition: 0.35s;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  transition: transform 0.2s ease;
 }
 
-.icons a:hover {
-  background: white;
-  color: var(--primary);
-  border-radius: 50%;
+.social-media a:hover {
+  transform: translateY(-2px);
 }
 
-@keyframes fade {
+.social-media a svg {
+  color: #ff5858;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  transition: color 0.3s ease;
+}
+
+.social-media a:hover svg {
+  color: #ff8888;
+}
+
+/* Special spacing for profiles with GitHub (4 icons) */
+.social-media.with-github {
+  justify-content: space-evenly;
+  padding: 15px 15px 10px 15px;
+}
+
+.social-media.with-github a svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* New animation that starts from center */
+@keyframes fadeInCenter {
   0% {
-    display: none;
     opacity: 0;
-  }
-  1% {
-    display: flex;
-    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
   }
   100% {
-    display: flex;
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
-.profile:nth-child(odd) {
-  --secondary: rgb(0, 0, 0);
-  --primary: rgb(255, 124, 10);
+.profile:nth-child(odd) .imge {
+  background-color: #ff8c42;
+}
+
+.profile:nth-child(odd) .social-media a svg {
+  color: #ff8c42;
+}
+
+.profile:nth-child(odd) .social-media a:hover svg {
+  color: #ffb366;
 }
 
 /* Mobile Styles */
@@ -293,11 +341,6 @@ body {
     max-width: 100%;
   }
   
-  .card {
-    width: 100%;
-  }
-  
-  /* Expanded state for mobile */
   .profile.expanded {
     max-height: 400px;
     z-index: 100;
@@ -307,16 +350,16 @@ body {
     border: 5px solid var(--primary);
   }
   
-  .profile .card {
-    display: none;
+  .profile.expanded .uv-card {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    opacity: 1;
   }
   
-  .profile.expanded .card {
-    display: flex;
-    animation: fade 0.3s ease-out;
-  }
-  
-  /* Overlay for expanded card */
   .team::after {
     content: '';
     position: fixed;
@@ -335,6 +378,21 @@ body {
     opacity: 1;
     pointer-events: auto;
   }
+
+  /* Mobile social media adjustments */
+  .social-media {
+    padding: 12px 15px 8px 15px;
+  }
+
+  .social-media a svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .social-media.with-github a svg {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 /* Desktop Styles */
@@ -347,14 +405,36 @@ body {
     border: 5px solid var(--primary);
   }
   
-  .profile:hover .card {
-    display: flex;
-    animation: fade 0.3s ease-out;
+  .profile:hover .uv-card {
+    display: block;
+    opacity: 1;
+    animation: fadeInCenter 0.3s ease-out forwards;
+  }
+  
+  /* Ensure the card is always positioned centrally on hover */
+  .profile .uv-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease-out;
   }
   
   @media (min-width: 1024px) {
     .team {
       padding: 0 40px;
+    }
+
+    /* Larger icons for desktop */
+    .social-media a svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .social-media.with-github a svg {
+      width: 18px;
+      height: 18px;
     }
   }
 
@@ -365,5 +445,59 @@ body {
       gap: 60px 40px;
       justify-items: center;
     }
+
+    /* Even larger icons for large screens */
+    .social-media a svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .social-media.with-github a svg {
+      width: 20px;
+      height: 20px;
+    }
   }
+}
+
+/* Additional hover effects for better UX */
+.social-media a {
+  position: relative;
+  border-radius: 50%;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.social-media a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Icon-specific hover colors */
+.social-media a:nth-child(1):hover svg {
+  /* Instagram gradient effect */
+  color: #E4405F;
+}
+
+.social-media a:nth-child(2):hover svg {
+  /* LinkedIn blue */
+  color: #0077B5;
+}
+
+.social-media a:nth-child(3):hover svg {
+  /* Email orange */
+  color: #FF6B35;
+}
+
+.social-media a:nth-child(4):hover svg {
+  /* GitHub purple */
+  color: #6366F1;
+}
+
+/* Ensure proper spacing between icons */
+.social-media {
+  gap: 8px;
+}
+
+.social-media.with-github {
+  gap: 4px;
 }

@@ -78,7 +78,7 @@ const Navbar = () => {
     { text: 'Home', href: '#hero' },
     { text: 'About', href: '#about-hero' },
     { text: 'Events', href: '#gallery' },
-    { text: 'Team', href: '#' },
+    { text: 'Team', href: '#team-profile' },
     { text: 'Contact', href: '#contact' },
   ];
 
@@ -141,30 +141,30 @@ const Navbar = () => {
   return (
     <header>
       <nav className={`navbar ${showNavbar ? 'visible' : 'hidden'}`}>
-        <div className="nav-left">
-          <a href="#" className="logo-container">
-            <img src={logo} alt="Logo" className="logo-image" />
-            <span className="rotaract-text">ROTARACT</span>
-          </a>
-        </div>
+        {/* Logo on the left */}
+        <a href="#" className="logo-container">
+          <img src={logo} alt="Logo" className="logo-image" />
+          <span className="rotaract-text">ROTARACT</span>
+        </a>
 
-        <ul className="nav-links">
-          {navItems.map((item) => (
-            <li
-              key={item.text}
-              onClick={(e) => {
-                e.preventDefault();
-                handleItemClick(item.text, item.href);
-              }}
-            >
-              <a href={item.href}>
-                {item.text}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/* Navigation elements on the right */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <ul className="nav-links">
+            {navItems.map((item) => (
+              <li
+                key={item.text}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleItemClick(item.text, item.href);
+                }}
+              >
+                <a href={item.href}>
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <div className="nav-right">
           <IconButton
             color="inherit"
             aria-label="open drawer"

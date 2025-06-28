@@ -10,21 +10,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact-section">
+      <section id="contact" className="contact-section">
       <div className="contact-container">
         <div className="contact-grid">
           {/* Useful Links */}
           <div className="useful-links">
             <h3 className='useful'>Useful Links</h3>
             <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#events">Events</a></li>
-              <li><a href="#team">Team</a></li>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#about-hero">About</a></li>
+              <li><a href="#gallery">Events</a></li>
+              <li><a href="#team-profile">Team</a></li>
             </ul>
+            <div className="rotary-info">
+              <p className="rotary-title">Rotary Club of Bombay</p>
+              <p className="rotary-details">RI District 3141 | Zone 1A</p>
+            </div>
             <p className='reserved'>© 2025 Rotaract CRCE | All rights reserved.</p>
           </div>
-
           {/* Contact Info */}
           <div className="contact-info">
             <div className="whatsapp-section">

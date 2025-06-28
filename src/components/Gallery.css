@@ -36,7 +36,7 @@ nav {
   top: 0;
   width: 25%;
   height: 100vh;
-  padding-top: 100px;
+  padding-top: 200px;
   overflow: hidden;
 }
 
@@ -86,7 +86,7 @@ nav {
 
 .active-img-indicator {
   position: absolute;
-  top: 100px;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
   width: 180px;
@@ -101,7 +101,7 @@ nav {
 
 .images {
   width: 75%;
-  padding-top: 100px;
+  padding-top: 200px;
 }
 
 .item {
@@ -116,16 +116,6 @@ nav {
 }
 
 /* Vertical line styling */
-.item::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: #ccc;
-  z-index: 1;
-}
 
 /* Hide vertical line on last item */
 .item:last-child::before {
@@ -364,13 +354,7 @@ nav {
 }
 
 /* Horizontal divider with connecting vertical line */
-.item hr {
-  position: relative;
-  margin: 2rem 0 2rem 20px; /* Added left margin to align with vertical line */
-  border: none;
-  height: 1px;
-  background-color: #ccc;
-}
+
 
 /* Mobile-specific styles */
 @media (max-width: 767px) {
@@ -465,7 +449,7 @@ nav {
   font-size: 65px;
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 30px;
+
   display: inline-block;
   position: relative;
   overflow: hidden;

@@ -37,7 +37,11 @@ const MarqueeComponent = () => {
           />
         ))}
       </Marquee> */}
+    <br/>
+    <br/>
+    <br/>
     </div>
+    
   );
 };
 export default MarqueeComponent;

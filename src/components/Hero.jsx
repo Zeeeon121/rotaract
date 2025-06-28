@@ -218,12 +218,12 @@ const Hero = () => {
         </div>
 
         <div className="hero-content" ref={textRef}>
-          <h2 className="anime-header">Welcome to</h2>
+          <h2 className="anime-header"></h2>
           <h1 className="anime-title">
             <span className="anime-text highlight">CRCE ROTARACT</span>
             <br />CLUB
           </h1>
-          <p className="anime-footer">Rotary club of Bombay 3141 zone 1A</p>
+          <p className="anime-footer"></p>
         </div>
       </section>
       

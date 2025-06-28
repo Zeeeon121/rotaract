@@ -16,7 +16,7 @@
 }
 
 .about-hero {
-  padding: clamp(80px, 8vw, 120px) 20px clamp(60px, 6vw, 80px);
+  padding: clamp(60px, 8vw, 120px) 15px clamp(40px, 6vw, 80px);
   text-align: center;
   background: #011526;
   position: relative;
@@ -39,25 +39,25 @@
 }
 
 .hero-description {
-  margin-top: clamp(20px, 3vw, 30px);
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  margin-top: clamp(15px, 3vw, 30px);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
   letter-spacing: clamp(1px, 0.2vw, 2px);
-  max-width: min(90%, 600px);
-  margin: clamp(20px, 3vw, 30px) auto 0;
+  max-width: min(95%, 600px);
+  margin: clamp(15px, 3vw, 30px) auto 0;
 }
 
 .main-content {
-  padding: clamp(30px, 5vw, 60px) 20px;
+  padding: clamp(20px, 5vw, 60px) 15px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .content-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
-  gap: clamp(40px, 6vw, 80px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(30px, 6vw, 80px);
   align-items: center;
 }
 
@@ -66,19 +66,20 @@
 }
 
 .content-title {
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  margin-bottom: clamp(30px, 4vw, 40px);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: clamp(20px, 4vw, 40px);
   background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
   text-align: left;
 }
 
 .content-text p {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: clamp(1.6, 0.2vw, 1.8);
-  margin-bottom: clamp(20px, 3vw, 30px);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  line-height: clamp(1.5, 0.2vw, 1.8);
+  margin-bottom: clamp(15px, 3vw, 30px);
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -92,13 +93,13 @@
 .image-box {
   width: 100%;
   max-width: 500px;
-  height: clamp(300px, 40vw, 400px);
+  height: clamp(250px, 40vw, 400px);
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
-  border-radius: clamp(15px, 2vw, 20px);
+  border-radius: clamp(12px, 2vw, 20px);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 clamp(15px, 2.5vw, 25px) clamp(30px, 5vw, 50px) rgba(0, 0, 0, 0.4);
+  box-shadow: 0 clamp(10px, 2.5vw, 25px) clamp(20px, 5vw, 50px) rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
   margin: 0 auto;
@@ -110,19 +111,19 @@
 }
 
 .image-icon {
-  width: clamp(60px, 8vw, 80px);
-  height: clamp(60px, 8vw, 80px);
+  width: clamp(50px, 8vw, 80px);
+  height: clamp(50px, 8vw, 80px);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
-  margin: 0 auto clamp(15px, 2vw, 20px);
+  margin: 0 auto clamp(10px, 2vw, 20px);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.2rem, 3vw, 2rem);
 }
 
 .image-text {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
   font-weight: 300;
 }
 
@@ -137,7 +138,7 @@
 }
 
 .stats-section {
-  padding: clamp(60px, 8vw, 80px) 20px;
+  padding: clamp(40px, 8vw, 80px) 15px;
   background: #011526;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -146,34 +147,34 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 20vw, 250px), 1fr));
-  gap: clamp(20px, 4vw, 40px);
+  grid-template-columns: repeat(auto-fit, minmax(clamp(130px, 20vw, 250px), 1fr));
+  gap: clamp(15px, 4vw, 40px);
   text-align: center;
 }
 
 .stat-card {
-  padding: clamp(25px, 4vw, 40px) clamp(15px, 2vw, 20px);
+  padding: clamp(20px, 4vw, 40px) clamp(10px, 2vw, 20px);
   background: rgba(255, 255, 255, 0.05);
-  border-radius: clamp(12px, 1.5vw, 15px);
+  border-radius: clamp(10px, 1.5vw, 15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-number {
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(1.8rem, 6vw, 3rem);
   font-weight: 700;
   color: #64b5f6;
-  margin-bottom: clamp(8px, 1vw, 10px);
+  margin-bottom: clamp(6px, 1vw, 10px);
 }
 
 .stat-label {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
 }
 
 /* Faculty Section Styles */
 .faculty-section {
-  padding: clamp(60px, 8vw, 100px) 20px;
+  padding: clamp(40px, 8vw, 100px) 15px;
   background: #011526;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -184,28 +185,29 @@
 }
 
 .faculty-title {
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   text-align: center;
-  margin-bottom: clamp(40px, 6vw, 60px);
+  margin-bottom: clamp(30px, 6vw, 60px);
   background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
 }
 
 .faculty-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
-  gap: clamp(30px, 5vw, 50px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(20px, 5vw, 50px);
 }
 
 .faculty-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: clamp(15px, 2vw, 20px);
-  padding: clamp(30px, 4vw, 40px);
+  border-radius: clamp(12px, 2vw, 20px);
+  padding: clamp(20px, 4vw, 40px);
   display: flex;
-  gap: clamp(20px, 3vw, 30px);
+  gap: clamp(15px, 3vw, 30px);
   align-items: flex-start;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -215,7 +217,7 @@
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(100, 181, 246, 0.3);
   transform: translateY(-5px);
-  box-shadow: 0 clamp(10px, 2vw, 20px) clamp(30px, 4vw, 40px) rgba(0, 0, 0, 0.3);
+  box-shadow: 0 clamp(8px, 2vw, 20px) clamp(20px, 4vw, 40px) rgba(0, 0, 0, 0.3);
 }
 
 .faculty-avatar {
@@ -223,14 +225,14 @@
 }
 
 .avatar-placeholder {
-  width: clamp(80px, 10vw, 100px);
-  height: clamp(80px, 10vw, 100px);
+  width: clamp(60px, 10vw, 100px);
+  height: clamp(60px, 10vw, 100px);
   border-radius: 50%;
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   border: 2px solid rgba(100, 181, 246, 0.3);
 }
 
@@ -239,23 +241,23 @@
 }
 
 .faculty-name {
-  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 600;
   color: #64b5f6;
-  margin-bottom: clamp(5px, 1vw, 8px);
+  margin-bottom: clamp(4px, 1vw, 8px);
 }
 
 .faculty-position {
-  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: clamp(15px, 2vw, 20px);
+  margin-bottom: clamp(12px, 2vw, 20px);
   font-weight: 300;
   font-style: italic;
 }
 
 .faculty-description {
-  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
-  line-height: clamp(1.6, 0.2vw, 1.7);
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  line-height: clamp(1.5, 0.2vw, 1.7);
   color: rgba(255, 255, 255, 0.85);
   margin: 0;
 }
@@ -265,10 +267,37 @@
   .faculty-card {
     flex-direction: column;
     text-align: center;
+    padding: clamp(15px, 4vw, 30px);
   }
   
   .faculty-info {
     text-align: center;
+  }
+
+  .content-text {
+    padding-right: 0;
+  }
+
+  .about-hero {
+    padding: clamp(40px, 8vw, 100px) 10px;
+  }
+
+  .hero-description {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faculty-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -280,7 +309,7 @@
 .faculty-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 60px);
+  gap: clamp(30px, 6vw, 60px);
   position: relative;
 }
 
@@ -302,29 +331,32 @@
 @media (max-width: 768px) {
   .faculty-split {
     grid-template-columns: 1fr;
+    gap: clamp(20px, 4vw, 40px);
   }
 
   .faculty-split::before {
     display: none;
   }
 }
+
 .faculty-avatar-img {
-  width: clamp(80px, 10vw, 100px);
-  height: clamp(80px, 10vw, 100px);
+  width: clamp(60px, 10vw, 100px);
+  height: clamp(60px, 10vw, 100px);
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid rgba(100, 181, 246, 0.3);
 }
 
-/* Remove or modify the existing .avatar-placeholder styles */
 .avatar-placeholder {
-  display: none; /* Hide the placeholder since we're using real images now */
+  display: none;
 }
+
 .float-title {
-  font-size: clamp(3rem, 6vw, 4rem) !important;
+  font-size: clamp(2.5rem, 6vw, 4rem) !important;
   font-weight: 700;
   background: linear-gradient(135deg, #bfb965 0%, #bf9d36 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   margin: 0;

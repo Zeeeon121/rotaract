@@ -1,45 +1,80 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Gallery.css';
-import rcImage from '../assets/rc.png'; // Adjust path if needed
-import SplitText from './SplitText'; // Assuming you have a SplitText component
+
 const Gallery = () => {
+  // Refs
   const previewRef = useRef(null);
   const imagesContainerRef = useRef(null);
   const navRef = useRef(null);
   const indicatorRef = useRef(null);
   const containerRef = useRef(null);
+  const eventsRef = useRef(null);
+  
+  // State
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const eventsRef = useRef(null);
 
+  // Custom SVG component with better styling and accessibility
+  const EventImage = ({ className, title }) => (
+    <svg 
+      className={className} 
+      viewBox="0 0 400 400" 
+      role="img"
+      aria-label={`${title} illustration`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#4a90e2" />
+          <stop offset="100%" stopColor="#8e44ad" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="#f8f9fa" rx="8" ry="8" />
+      <circle cx="200" cy="150" r="80" fill="url(#gradient)" />
+      <text 
+        x="200" 
+        y="150" 
+        fontFamily="Arial, sans-serif" 
+        fontSize="24" 
+        fill="white" 
+        textAnchor="middle" 
+        dominantBaseline="middle"
+        fontWeight="bold"
+      >
+        {title.split(' ')[0]}
+      </text>
+    </svg>
+  );
+
+  // Gallery items data
   const items = [
     {
       title: "Installation Ceremony",
       description: "This innovative project combines modern design principles with cutting-edge technology to create a seamless user experience...",
       aim: "Lorem, ipsum dolor sit amet consectetur adipisicing elit...",
       date: "21 June 2025",
-      image: rcImage
+      image: (props) => <EventImage title="Installation" {...props} />
     },
     {
       title: "Footslog",
       description: "A revolutionary approach to digital transformation...",
       aim: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
       date: "18 June 2025",
-      image: rcImage
+      image: (props) => <EventImage title="Footslog" {...props} />
     },
     {
       title: "Beach Cleanup",
       description: "An ambitious project that reimagines the future of interactive design...",
       aim: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
       date: "15 June 2025",
-      image: rcImage
+      image: (props) => <EventImage title="Beach" {...props} />
     },
     {
       title: "Heart n Sole Run",
       description: "The culmination of months of research and development...",
       aim: "Lorem ipsum dolor sit amet consectetur, adipisicing elit...",
       date: "12 June 2025",
-      image: rcImage
+      image: (props) => <EventImage title="Run" {...props} />
     }
   ];
 
@@ -54,13 +89,18 @@ const Gallery = () => {
     const itemsElements = Array.from(container.querySelectorAll('.item'));
     const item = itemsElements[index];
     if (item) {
+      const itemTop = item.offsetTop;
+      const containerTop = container.offsetTop;
+      const navHeight = navRef.current?.offsetHeight || 0;
+      
       window.scrollTo({
-        top: item.offsetTop - window.innerHeight * 0.1,
+        top: itemTop + containerTop - navHeight - 20,
         behavior: 'smooth'
       });
     }
   };
 
+  // Responsive handling
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -70,6 +110,7 @@ const Gallery = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Scroll and animation effects
   useEffect(() => {
     if (isMobile) return;
 
@@ -91,7 +132,7 @@ const Gallery = () => {
     let animationId;
 
     const recalculatePositions = () => {
-      const containerTop = container.offsetTop + imagesContainer.offsetTop - nav.offsetHeight;
+      const containerTop = container.offsetTop;
       const viewportHeight = window.innerHeight;
 
       itemPositions = itemsElements.map(item => ({
@@ -100,7 +141,7 @@ const Gallery = () => {
         index: parseInt(item.dataset.index)
       }));
 
-      maxPreviewScroll = Math.max(0, preview.offsetHeight - container.querySelector('.minimap').offsetHeight + 200);
+      maxPreviewScroll = Math.max(0, preview.scrollHeight - container.querySelector('.minimap').offsetHeight + 300);
     };
 
     const animate = () => {
@@ -109,8 +150,8 @@ const Gallery = () => {
 
       const activePreview = previewItems[activeItemIndex];
       if (activePreview) {
-        const targetTop = activePreview.offsetTop + 100;
-        const currentTop = parseFloat(indicator.style.top || '100px');
+        const targetTop = activePreview.offsetTop + 200;
+        const currentTop = parseFloat(indicator.style.top || '200px');
         const newTop = currentTop + (targetTop - currentTop) * 0.2;
         indicator.style.top = `${newTop}px`;
       }
@@ -120,7 +161,7 @@ const Gallery = () => {
 
     const updateScroll = () => {
       const scrollPosition = window.scrollY;
-      const containerTop = container.offsetTop + imagesContainer.offsetTop - nav.offsetHeight;
+      const containerTop = container.offsetTop;
       const containerHeight = imagesContainer.offsetHeight;
       const viewportHeight = window.innerHeight;
 
@@ -132,23 +173,24 @@ const Gallery = () => {
       );
 
       if (activeItem) {
-        setActiveItemIndex(Math.max(0, Math.min(3, activeItem.index)));
+        setActiveItemIndex(Math.max(0, Math.min(items.length - 1, activeItem.index)));
       }
     };
 
+    // Add click handlers to preview items
     previewItems.forEach((previewItem, index) => {
       previewItem.style.cursor = "pointer";
-      previewItem.addEventListener('click', () => handlePreviewClick(index));
+      previewItem.onclick = (e) => {
+        e.preventDefault();
+        handlePreviewClick(index);
+      };
     });
 
-    animate();
-    updateScroll();
     recalculatePositions();
+    animate();
 
-    let isScrolling;
     const handleScroll = () => {
-      clearTimeout(isScrolling);
-      isScrolling = setTimeout(updateScroll, 16);
+      updateScroll();
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -164,87 +206,93 @@ const Gallery = () => {
         recalculatePositions();
         updateScroll();
       });
+      
+      // Clean up click handlers
+      previewItems.forEach(previewItem => {
+        previewItem.onclick = null;
+      });
     };
   }, [activeItemIndex, items.length, isMobile]);
 
   return (
     <>
       <section ref={eventsRef} className="events-section">
-  <div className="events-container">
-    <SplitText 
-      text="Our Events"
-      className="events-title"
-      splitType="chars"
-      delay={50}
-      from={{ opacity: 0, y: 20 }}
-      to={{ opacity: 1, y: 0 }}
-        replayOnEnter={false}  
-    />
-    <p className="events-subtitle">Discover our upcoming and past events</p>
-  </div>
-</section>
-    <div className="container" ref={containerRef}>
-      <div className="wrapper" id='gallery'>
-        <nav ref={navRef}>
-          {/* Navigation links can be added here */}
-        </nav>
+        <div className="events-container">
+          <h1 className="events-title">Our Events</h1>
+        </div>
+      </section>
+      
+      <div className="container" ref={containerRef}>
+        <div className="wrapper" id='gallery'>
+          <nav ref={navRef} aria-label="Gallery navigation">
+            {/* Navigation links can be added here */}
+          </nav>
 
-        <div className="gallery">
-          {!isMobile && (
-            <div className="minimap">
-              <div className="preview" ref={previewRef}>
-                {items.map((item, index) => (
-                  <div key={index} className="item-preview">
-                    <span>{item.title}</span>
-                  </div>
-                ))}
+          <div className="gallery">
+            {!isMobile && (
+              <div className="minimap">
+                <div className="preview" ref={previewRef}>
+                  {items.map((item, index) => (
+                    <button 
+                      key={index} 
+                      className={`item-preview ${activeItemIndex === index ? 'active' : ''}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handlePreviewClick(index);
+                      }}
+                      aria-label={`View ${item.title}`}
+                    >
+                      <span>{item.title}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="active-img-indicator" ref={indicatorRef} aria-hidden="true"></div>
               </div>
-              <div className="active-img-indicator" ref={indicatorRef}></div>
-            </div>
-          )}
+            )}
 
-          <div className={`images ${isMobile ? 'mobile' : ''}`} ref={imagesContainerRef}>
-            {items.map((item, index) => (
-              <React.Fragment key={index}>
-                <div className={`item ${isMobile ? 'mobile' : ''}`} data-index={index}>
-                  <div className="item-img">
-                    <img src={item.image} alt={item.title} />
-                  </div>
+            <div className={`images ${isMobile ? 'mobile' : ''}`} ref={imagesContainerRef}>
+              {items.map((item, index) => (
+                <article 
+                  key={index} 
+                  className={`item ${isMobile ? 'mobile' : ''}`} 
+                  data-index={index}
+                  aria-labelledby={`item-title-${index}`}
+                >
+                  <figure className="item-img">
+                    {item.image({ className: 'event-svg-image' })}
+                  </figure>
                   <div className="item-details">
                     <div className="item-description">
-                      <div className="item-title">{item.title}</div>
-                      <div className="item-desc-text">{item.description}</div>
+                      <h2 id={`item-title-${index}`} className="item-title">{item.title}</h2>
+                      <p className="item-desc-text">{item.description}</p>
                     </div>
                     <div className={`item-bottom ${isMobile ? 'mobile' : ''}`}>
                       <div className="item-aim">
-                        <div className="aim-label">Aim</div>
-                        <div className="aim-text">{item.aim}</div>
+                        <h3 className="aim-label">Aim</h3>
+                        <p className="aim-text">{item.aim}</p>
                       </div>
                       <div className="item-actions">
                         <div className="item-info">
-                          <div className="item-date">{item.date}</div>
+                          <time className="item-date" dateTime="2025-06-21">{item.date}</time>
                         </div>
                         <button
                           className="view-more-btn"
                           onClick={() => handleViewMore(index)}
+                          aria-label={`More details about ${item.title}`}
                         >
                           View More
                         </button>
                       </div>
                     </div>
                   </div>
-                </div>
-                {index < items.length - 1 && (
-                  <hr style={{ margin: '2rem 0', borderColor: '#ccc' }} />
-                )}
-              </React.Fragment>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
 
-export default Gallery
+export default Gallery;
