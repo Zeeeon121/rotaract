@@ -50,15 +50,15 @@ const Gallery = () => {
   const items = [
     {
       title: "Installation Ceremony",
-      description: "This innovative project combines modern design principles with cutting-edge technology to create a seamless user experience...",
-      aim: "Lorem, ipsum dolor sit amet consectetur adipisicing elit...",
+      description: "Installation marks the ceremonial handover from the outgoing council to the new team. It celebrates past achievements, introduces the vision for the year ahead, and sets the tone with inspiring speeches and heartfelt gratitude.",
+      aim: "The event honours continuity and change, reinforcing leadership, responsibility, and alignment with the club’s yearly goals and theme.",
       date: "21 June 2025",
       image: (props) => <EventImage title="Installation" {...props} />
     },
     {
       title: "Footslog",
-      description: "A revolutionary approach to digital transformation...",
-      aim: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      description: "Footslog is not just a trek.... It’s an experience of togetherness, self-discovery, and unplugged joy. Away from screens, schedules, and city stress, students venture into nature to reconnect with themselves and one another. Whether it’s scaling rocky paths or pushing through the final stretch together, Footslog brings out a spirit of adventure, spontaneity, and carefree fun.",
+      aim: "To spark spontaneous connections, encourage stepping out of comfort zones, and build lasting camaraderie through shared experiences in nature.",
       date: "18 June 2025",
       image: (props) => <EventImage title="Footslog" {...props} />
     },
@@ -71,8 +71,9 @@ const Gallery = () => {
     },
     {
       title: "Heart n Sole Run",
-      description: "The culmination of months of research and development...",
-      aim: "Lorem ipsum dolor sit amet consectetur, adipisicing elit...",
+      description: "Heart and Sole is our flagship charity marathon — a vibrant convergence of fitness, philanthropy, and community spirit. It’s a platform where people from all walks of life come together to run for a cause, to contribute to something larger than themselves. With over 1000 participants joining in recent editions, the event blends energy and empathy at scale. Each stride taken fuels not just momentum, but meaningful change.",
+
+      aim: "To inspire social responsibility through movement, uniting participants in a shared mission to uplift the lives of children at Father Agnel Ashram.",
       date: "12 June 2025",
       image: (props) => <EventImage title="Run" {...props} />
     }

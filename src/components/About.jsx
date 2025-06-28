@@ -146,7 +146,7 @@ const About = () => {
               About Us
             </h1>
             <div className="hero-description">
-              Rotaract CRCE is a youth-driven club under Rotary International, focused on leadership and service.
+            Rotaract CRCE is a space where ideas turn into action, and individuals grow into leaders. Backed by the International Rotary Organization, we are a community driven by service, creativity, and a deep commitment to growth.
             </div>
           </div>
         </section>
@@ -154,7 +154,8 @@ const About = () => {
         <div className="content-grid">
           <div ref={contentRef} className="content-text">
             <h2 ref={storyTitleRef} className="content-title">Our Theme: Esencia</h2>
-            <p>Esencia refers to the core spirit or identity that defines us. It’s the soul of our work and mission.</p>
+            <p> essence or core, is more than a theme. It’s a return to what defines us: clarity of purpose, authenticity of voice, and intention behind every action.
+</p>
           </div>
           <div ref={imageRef} className="image-wrapper">
             <div className="image-box">
